@@ -1,0 +1,13 @@
+exports.up = function (knex) {
+  return knex.schema.createTable("rating", function (table) {
+    table.increments("rating_id");
+    table.integer("likes").nullable().defaultTo(0);
+    table.integer("dislikes").nullable().defaultTo(0);
+    table.integer("user_id").references("use_id").inTable("user");
+    table.integer("post_id").references("post_id").inTable("feeds");
+  });
+};
+
+exports.down = function (knex) {
+  return knex.schema.dropTable("rating");
+};
