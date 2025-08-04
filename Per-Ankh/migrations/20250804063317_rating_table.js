@@ -3,7 +3,7 @@ exports.up = function (knex) {
     table.increments("rating_id");
     table.integer("likes").nullable().defaultTo(0);
     table.integer("dislikes").nullable().defaultTo(0);
-    table.integer("user_id").references("use_id").inTable("user");
+    table.integer("user_id").references("use_id").inTable("users");
     table.integer("post_id").references("post_id").inTable("feeds");
   });
 };
