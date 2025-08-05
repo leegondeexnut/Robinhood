@@ -1,43 +1,50 @@
-'use client'
-import Link from 'next/link';
+"use client";
+import Link from "next/link";
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from "react";
 
+export default function Nav({
+  title,
+  page,
+}: {
+  title: string;
+  page: { href: string; title: string }[];
+}) {
+  const [scrollDown, setScrollDown] = useState(false);
+  const lastYRef = useRef(0);
+  useEffect(() => {
+    function onScroll() {
+      const currentY = window.scrollY;
+      if (currentY > lastYRef.current) {
+        setScrollDown(true);
+      } else {
+        setScrollDown(false);
+      }
+      lastYRef.current = currentY;
+    }
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-export default function Nav({ title, page }: { title: string; page: { href: string; title: string }[] }) {
-
-        const [ scrollDown, setScrollDown] = useState(false)
-        const lastYRef = useRef(0);
-        useEffect(()=>{
-            function onScroll(){
-                const currentY = window.scrollY;
-                if (currentY > lastYRef.current){
-                    setScrollDown(true)
-                } else{
-                    setScrollDown(false)
-                }
-                lastYRef.current= currentY;
-            }
-            window.addEventListener('scroll', onScroll);
-            return () => window.removeEventListener('scroll', onScroll);
-
-        }, [])
-        
-    return (
-        
-        <nav className={`border-2 border-[#3d3d3d] rounded-lg text-white w-[95%] mx-8 m-4 py-2 px-8 flex flex-cols justify-between fixed transition-transform duration-300 ${scrollDown ? 'translate-y-full hidden': 'translate-y-0 opacity-100'}`}>
-            <div><h2 className="text-xl py-4">{title}</h2></div>
-            <ul>
-                {
-                    page.map((item)=> (
-                        <li key={item.href} className="p-2 m-4 bg-red-300 rounded">
-                        <Link href={item.href}>
-                        {item.title}
-                        </Link>
-                        </li>
-                    ))
-                }
-            </ul>
-        </nav>
-    )
+  return (
+    <nav
+      className={`bg-gray-600 border-2 border-[#3d3d3d] rounded-lg text-white w-[95%] mx-8 m-4 py-2 px-8 flex flex-cols justify-between fixed transition-transform duration-300 ${
+        scrollDown ? "translate-y-full hidden" : "translate-y-0 opacity-100"
+      }`}
+    >
+      <div>
+        <h2 className="text-xl py-4">{title}</h2>
+      </div>
+      <ul>
+        {page.map((item) => (
+          <li
+            key={item.href}
+            className="p-2 m-4 bg-red-300 rounded-2xl hover:bg-blue-300"
+          >
+            <Link href={item.href}>{item.title}</Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
 }
