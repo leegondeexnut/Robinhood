@@ -21,22 +21,28 @@ export default function Fooder() {
           <h3 className="text-white font-semibold mb-2">Links</h3>
           <ul className="space-y-1 text-sm">
             <li>
-              <Link href="/" className="hover:text-red-300">
+              <Link href="/" className="text-red-300 hover:text-blue-300">
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-red-300">
+              <Link href="/about" className="text-red-300 hover:text-blue-300">
                 About
               </Link>
             </li>
             <li>
-              <Link href="/services" className="hover:text-red-300">
+              <Link
+                href="/services"
+                className="text-red-300 hover:text-blue-300"
+              >
                 Services
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-red-300">
+              <Link
+                href="/contact"
+                className="text-red-300 hover:text-blue-300"
+              >
                 Contact
               </Link>
             </li>
@@ -53,27 +59,27 @@ export default function Fooder() {
             />
             <button
               type="submit"
-              className="bg-red-300 hover:bg-blue-300 text-white text-sm px-4 py-2 rounded"
+              className="bg-red-300 hover:bg-blue-300 text-white text-sm px-4 py-2 rounded cursor-pointer"
             >
               Subscribe
             </button>
           </form>
         </div>
 
-        <div className="ml-30">
-          <h3 className="text-white font-semibold mb-2 ml-12">Follow Us</h3>
+        <div className="ml-12">
+          <h3 className="text-white font-semibold mb-2 ml-27">Follow Us</h3>
           <div className="flex space-x-4 mt-2 text-xl">
             <Link href="https://facebook.com" target="_blank">
-              <FaFacebook className="w-8 h-8 hover:bg-red-300 hover:animate-bounce cursor-pointer"></FaFacebook>
+              <FaFacebook className="w-15 h-15 hover:bg-blue-300 hover:animate-bounce cursor-pointer border-2 rounded-2xl p-2 border-red-300 hover:border-blue-300"></FaFacebook>
             </Link>
             <Link href="https://twitter.com" target="_blank">
-              <FaTwitter className="w-8 h-8 hover:bg-red-300 hover:animate-bounce cursor-pointer"></FaTwitter>
+              <FaTwitter className="w-15 h-15 hover:bg-blue-300 hover:animate-bounce cursor-pointer border-2 rounded-2xl p-2 border-red-300 hover:border-blue-300"></FaTwitter>
             </Link>
             <Link href="https://instagram.com" target="_blank">
-              <FaInstagram className="w-8 h-8 hover:bg-red-300 hover:animate-bounce cursor-pointer"></FaInstagram>
+              <FaInstagram className="w-15 h-15 hover:bg-blue-300 hover:animate-bounce cursor-pointer border-2 rounded-2xl p-2 border-red-300 hover:border-blue-300"></FaInstagram>
             </Link>
             <Link href="https://whatsapp.com" target="_blank">
-              <FaWhatsapp className="w-8 h-8 hover:bg-red-300 hover:animate-bounce cursor-pointer"></FaWhatsapp>
+              <FaWhatsapp className="w-15 h-15 hover:bg-blue-300 hover:animate-bounce cursor-pointer border-2 rounded-2xl p-2 border-red-300 hover:border-blue-300"></FaWhatsapp>
             </Link>
           </div>
         </div>
