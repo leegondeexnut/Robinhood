@@ -8,7 +8,7 @@ import { FaTwitter } from "react-icons/fa";
 
 export default function Fooder() {
   return (
-    <footer className="bg-gray-600 text-gray-300 px-6 py-10 mt-10 w-full absolute bottom-0">
+    <footer className="bg-gray-600 text-gray-300 px-6 py-10 w-full h-[30vh]">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         <div>
           <h2 className="text-xl font-bold text-white">MyApp</h2>
@@ -53,7 +53,7 @@ export default function Fooder() {
             />
             <button
               type="submit"
-              className="bg-red-300 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded"
+              className="bg-red-300 hover:bg-blue-300 text-white text-sm px-4 py-2 rounded"
             >
               Subscribe
             </button>

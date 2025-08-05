@@ -33,7 +33,7 @@ export default function RootLayout({
           title="Navigation"
           page={[{ href: "/details", title: "Details" }]}
         ></Nav>
-        {children}
+        <div className="h-min-[70vh] overflow-scroll">{children}</div>
         <Fooder />
       </body>
     </html>
