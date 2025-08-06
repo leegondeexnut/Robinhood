@@ -1,8 +1,7 @@
 export default function DetailsPage() {
     return(
-        <div className="flex flex-col items-center justify-center h-screen">
-            <h1 className="text-3xl font-bold mb-4">Details Page</h1>
-            <p className="text-lg">This is the details page content.</p>
-        </div>
+         <div className="font-sans grid grid-rows-[20px_1fr_20px] sm:p-5 h-screen">
+            <div id="feed" className="left-0 w-56 h- bg-red-300 mt-25"></div>
+         </div>
     )
 }
