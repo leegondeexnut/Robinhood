@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function LogPage() {
@@ -24,7 +24,7 @@ export default function LogPage() {
       });
       if (res.ok || res.status === 201) {
         alert("User Logged in Successfully");
-        return router.push("/details");
+        router.push(`/api/user/details/${form.email}`)
       }
       if (res.status === 422) {
         return alert("The password didn't match");

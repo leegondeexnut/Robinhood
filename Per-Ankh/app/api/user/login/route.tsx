@@ -1,6 +1,7 @@
 import knex from "knex";
 import { NextResponse } from "next/server";
 import bcrypt from 'bcrypt'
+import crypto from 'crypto'
 import knexConfig from "@/knexfile";
 require("dotenv").config();
 
@@ -21,11 +22,41 @@ export async function POST(request: Request) {
     const pass = existingEmail.map((val)=>{
         return val.password
     })
+    const id = existingEmail.map((val)=>{
+        return val.use_id
+    })
+
+
     const match = await bcrypt.compare(password, pass[0]);
     if(!match){
         return NextResponse.json({error: "The password didnt match try again."}, {status: 422});
     }
-    return NextResponse.json({ message: "Logged in successfully", user: existingEmail }, { status: 201 });
+    const token = crypto.randomBytes(32).toString('hex')
+    const expiry = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+    const [session] = await kn('sessions').insert({
+      user_id: id[0],
+      token,
+      expires_at: expiry
+    })
+    .returning('*')
+
+    const response = NextResponse.json(
+      {
+        message: 'Logged in successfully',
+        user: { existingEmail },
+        expiresAt: session.expires_at,
+      },
+      { status: 200 }
+    );
+    response.cookies.set('token', token, {
+      httpOnly: true,
+      path: '/',
+      maxAge: 7 * 24 * 60 * 60, // 7 days
+      sameSite: 'strict',
+      secure: process.env.NODE_ENV === 'production', // HTTPS in production
+    });
+
+    return response;
   } catch (error) {
     console.error(error);
     return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });

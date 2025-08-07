@@ -24,6 +24,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
       <body
@@ -31,7 +32,7 @@ export default function RootLayout({
       >
         <Nav
           title="Navigation"
-          page={[{ href: "/details", title: "Details" }]}
+          page={[{ href: '/details', title: 'Details' }]}
         ></Nav>
         <div className="h-min-[70vh] overflow-scroll">{children}</div>
         <Fooder />
