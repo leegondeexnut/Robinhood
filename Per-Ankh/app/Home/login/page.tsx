@@ -24,7 +24,7 @@ export default function LogPage() {
       });
       if (res.ok || res.status === 201) {
         alert("User Logged in Successfully");
-        router.push(`/api/user/details/${form.email}`)
+        router.push(`/Home/${form.email}`);
       }
       if (res.status === 422) {
         return alert("The password didn't match");
