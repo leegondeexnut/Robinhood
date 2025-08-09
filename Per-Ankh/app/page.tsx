@@ -11,7 +11,7 @@ export default function Home() {
       try {
         const res = await fetch("/api/user/verify", {
           method: "GET",
-          credentials: "include", // Send HttpOnly cookie
+          credentials: "include",
         });
         const data = await res.json();
         if (data.user) {

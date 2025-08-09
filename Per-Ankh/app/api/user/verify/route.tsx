@@ -3,7 +3,7 @@ import { NextResponse, NextRequest } from 'next/server';
 import config from '@/knexfile';
 require('dotenv').config();
 
-const db = knex(config.development);
+const kn = knex(config.development);
 
 export async function GET(request: NextRequest) {
   try {
@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'No token provided' }, { status: 401 });
     }
 
-    const session = await db('sessions')
+    const session = await kn('sessions')
       .where({ token })
       .where('expires_at', '>', new Date())
       .first();
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid or expired token' }, { status: 401 });
     }
 
-    const user = await db('users').where({ use_id: session.user_id }).first();
+    const user = await kn('users').where({ use_id: session.user_id }).first();
     if (!user) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }

@@ -1,13 +1,12 @@
 import knex from "knex";
 import { NextResponse } from "next/server";
-import bcrypt from 'bcrypt'
 import knexConfig from "@/knexfile";
 require("dotenv").config();
 
 const kn = knex(knexConfig.development);
 
 export async function GET() {
-  const feeds = await kn("feeds").select("*");
+  const feeds = await kn("feeds").orderBy('post_id', 'desc');
   return Response.json({ feeds });
 }
 
@@ -20,7 +19,6 @@ export async function POST(request: Request) {
     if ( !post_text && !post_image ) {
       return NextResponse.json({ error: "Dang, what you tryna post" }, { status: 400 });
     }
-
 
   
 
