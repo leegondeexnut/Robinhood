@@ -30,10 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Nav
-          title="Navigation"
-          page={[{ href: '/details', title: 'Details' }]}
-        ></Nav>
+        
         <div className="h-min-[70vh] overflow-scroll">{children}</div>
         <Fooder />
       </body>

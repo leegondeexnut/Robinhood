@@ -9,10 +9,7 @@ export default function ChildrenLayout({
 }>) {
   return (
       <div>
-        <Nav
-          title="Navigation"
-          page={[{ href: "/details", title: "Details" }]}
-        ></Nav>
+        
         <div className="h-min-[70vh] ">{children}</div>
       </div>
   );

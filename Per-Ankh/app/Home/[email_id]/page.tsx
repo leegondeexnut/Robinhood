@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation';
+import Nav from '@/app/components/Nav'
 import Link from 'next/link'
 import  Image  from 'next/image'
 import debounce from 'lodash/debounce'
@@ -104,6 +105,9 @@ export default function  DetailsPage({ params }) {
     }, 500
     );
 
+
+    
+
     const [close, setClose] = useState(true)
     const openForm = (e: React.MouseEvent<HTMLButtonElement>)=>{
         e.preventDefault()
@@ -173,7 +177,14 @@ const handleclick = async (e) => {
 
 
     return(
-         <div className="font-sans flex pt-20 sm:p-5 min-h-screen">
+
+
+
+         <div className="font-sans flex  px-4 min-h-screen">
+            <Nav
+          title="Navigation"
+          page={[{ href: "/details", title: "Details" }]}
+        ></Nav>
 
 
 
